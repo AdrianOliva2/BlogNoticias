@@ -1,4 +1,4 @@
-<div class="row mt-5" novalidate [formGroup]="form">
+<div class="row" novalidate [formGroup]="form">
     <div class="col-md-4"></div>
     <div class="col-md-4">
       <div class="form-group">
@@ -6,7 +6,8 @@
         <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Usuario" formControlName="txtUsu">
         <label for="" [ngClass]="{'text-light': temaOscuro}">Contraseña</label>
         <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Contraseña" formControlName="txtContra">
-        <a name="" id="" class="btn btn-primary mt-2" role="button">Iniciar sesión</a>
+        <p class="text-danger" *ngIf="(!form.controls['txtUsu'].valid || !form.controls['txtContra'].valid) && (form.controls['txtUsu'].dirty || form.controls['txtContra'].dirty)">Introduce el nombre de usuario y la contraseña</p>
+        <a name="" id="" class="btn btn-primary mt-2" role="button" (click)="onLoginAttemp()">Iniciar sesión</a>
       </div>
     </div>
     <div class="col-md-4"></div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ServicioTemaService } from './servicios/servicio-tema.service';
 
 @Component({
   selector: 'app-root',
@@ -6,9 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  tema: boolean = true
+  
+  temaOscuro: boolean
 
-  cambiarTema(temaCambiado: boolean) {
-    this.tema = temaCambiado;
+  constructor(private servicioTema: ServicioTemaService) {
+    this.temaOscuro = servicioTema.getTemaOscuro();
+    servicioTema.temaOscuro$().subscribe(temaOscuro => this.temaOscuro = temaOscuro);
   }
+
 }

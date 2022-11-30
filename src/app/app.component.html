@@ -1,4 +1,5 @@
-<div class="d-complete" [ngClass]="{'bg-dark': tema}">
-  <seleccion-tema (temaOscuroEmit)="cambiarTema($event)"></seleccion-tema>
-  <formulario-inicio-sesion [temaOscuro]="tema"></formulario-inicio-sesion>
+<div [ngClass]="{'bg-dark': temaOscuro}">
+  <seleccion-tema></seleccion-tema>
+  <div class="mt-5"></div>
+  <router-outlet></router-outlet>
 </div>

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ServicioTemaService } from 'src/app/servicios/servicio-tema.service';
 
 @Component({
   selector: 'seleccion-tema',
@@ -7,21 +8,18 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class SeleccionTemaComponent implements OnInit {
 
-  @Output() temaOscuroEmit: EventEmitter<boolean>;
   temaOscuro: boolean;
 
-  constructor() {
-    this.temaOscuroEmit = new EventEmitter<boolean>();
-    this.temaOscuro = true;
-    this.temaOscuroEmit.emit(this.temaOscuro);
+  constructor(private servicioTema: ServicioTemaService) {
+    this.temaOscuro = servicioTema.getTemaOscuro();
+    servicioTema.temaOscuro$().subscribe(temaOscuro => this.temaOscuro = temaOscuro);
   }
 
   ngOnInit(): void {
   }
 
   cambiarTema(oscuro: boolean) {
-    this.temaOscuro = oscuro;
-    this.temaOscuroEmit.emit(oscuro);
+    this.servicioTema.setTemaOscuro(oscuro);
   }
 
 }
