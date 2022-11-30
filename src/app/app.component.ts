@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'BlogNoticias';
+  tema: boolean = true
+
+  cambiarTema(temaCambiado: boolean) {
+    this.tema = temaCambiado;
+  }
 }
