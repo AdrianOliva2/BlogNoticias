@@ -5,7 +5,7 @@
         <label for="" [ngClass]="{'text-light': temaOscuro}">Nombre de usuario</label>
         <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Usuario" formControlName="txtUsu">
         <label for="" [ngClass]="{'text-light': temaOscuro}">Contraseña</label>
-        <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Contraseña" formControlName="txtContra">
+        <input type="password" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Contraseña" formControlName="txtContra">
         <p class="text-danger" *ngIf="(!form.controls['txtUsu'].valid || !form.controls['txtContra'].valid) && (form.controls['txtUsu'].dirty || form.controls['txtContra'].dirty)">Introduce el nombre de usuario y la contraseña</p>
         <a name="" id="" class="btn btn-primary mt-2" role="button" (click)="onLoginAttemp()">Iniciar sesión</a>
       </div>

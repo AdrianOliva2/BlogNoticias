@@ -17,16 +17,18 @@ export class PaginaDetallesComponent implements OnInit {
   constructor(private servicioTema: ServicioTemaService, private servicioEntradas: ServicioEntradasService, private router: ActivatedRoute) {
     this.temaOscuro = servicioTema.getTemaOscuro();
     this.servicioTema.temaOscuro$().subscribe(temaOscuro => this.temaOscuro = temaOscuro);
-    let idText: number | null = null;
-    this.router.params.subscribe(id => idText = parseInt(id['id']))
-    if (idText != null) {
-      this.entrada = this.servicioEntradas.getEntrada(idText);
-    } else {
-      this.entrada = undefined;
-    }
+    this.router.params.subscribe(id => this.cargarEntrada(parseInt(id['id'])))
   }
 
   ngOnInit(): void {
+  }
+
+  cargarEntrada(id: number | null) {
+    if (id != null) {
+      this.entrada = this.servicioEntradas.getEntrada(id);
+    } else {
+      this.entrada = undefined;
+    }
   }
 
 }

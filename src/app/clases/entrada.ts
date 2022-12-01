@@ -6,7 +6,7 @@ export class Entrada {
     private fechaCreacion: Date
 
     public constructor(titulo: string, contenido: string, fechaCreacion: Date) {
-        this.titulo = titulo;
+        this.titulo = titulo.toUpperCase();
         this.contenido = contenido;
         this.fechaCreacion = fechaCreacion;
     }
@@ -24,7 +24,7 @@ export class Entrada {
     }
 
     public setTitulo(titulo: string): void {
-        this.titulo = titulo;
+        this.titulo = titulo.toUpperCase();
     }
 
     public getContenido(): string {

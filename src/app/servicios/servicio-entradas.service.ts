@@ -14,12 +14,12 @@ export class ServicioEntradasService {
     let entrada1: Entrada = new Entrada("Título Entrada 1", "Contenido Entrada 1", new Date());
     entrada1.setId(1);
     let entrada2: Entrada = new Entrada("Título Entrada 2", "Contenido Entrada 2", new Date());
-    entrada1.setId(2);
+    entrada2.setId(2);
     let entrada3: Entrada = new Entrada("Título Entrada 3", "Contenido Entrada 3", new Date());
-    entrada1.setId(3);
+    entrada3.setId(3);
     let entrada4: Entrada = new Entrada("Título Entrada 4", "Contenido Entrada 4", new Date());
-    entrada1.setId(4);
-    this.entradas = [entrada1, entrada2, entrada3, entrada4];
+    entrada4.setId(4);
+    this.entradas = [entrada4, entrada3, entrada2, entrada1];
     this._entradas$ = new BehaviorSubject<Entrada[]>(this.entradas);
   }
 
@@ -31,8 +31,8 @@ export class ServicioEntradasService {
     return [...this.entradas];
   }
 
-  public getEntrada(id: number): Entrada {
-    return this.entradas.filter(entrada => entrada.getId() == id)[0];
+  public getEntrada(id: number): Entrada | undefined {
+    return this.entradas.find(entrada => entrada.getId() == id);
   }
 
   public eliminarEntrada(id?: number): void {
@@ -42,9 +42,10 @@ export class ServicioEntradasService {
 
   public anadirEntrada(entrada: Entrada) {
     if (this.entradas.length > 0) {
-      entrada.setId(this.entradas[(this.entradas.length - 1)].getId());
+      let id: number = (this.entradas[0].getId()! + 1);
+      entrada.setId(id);
     } else {
-      entrada.setId(0);
+      entrada.setId(1);
     }
     this.entradas.unshift(entrada);
     this._entradas$.next(this.entradas);

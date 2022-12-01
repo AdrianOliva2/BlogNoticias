@@ -1,0 +1,8 @@
+<form class="form-group" [formGroup]="form">
+    <label for="" [ngClass]="{'text-light': temaOscuro}">Título de la noticia</label>
+    <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Título" formControlName="txtTitulo">
+    <label for="" [ngClass]="{'text-light': temaOscuro}">Noticia</label>
+    <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Noticia" formControlName="txtNoticia">
+    <p class="text-danger" *ngIf="(!form.controls['txtTitulo'].valid || !form.controls['txtNoticia'].valid) && (form.controls['txtTitulo'].dirty || form.controls['txtNoticia'].dirty)">Introduce el título y la noticia</p>
+    <a name="" id="" class="btn btn-primary mt-2" role="button" (click)="anadirNoticia()">Añadir noticia</a>
+</form>
