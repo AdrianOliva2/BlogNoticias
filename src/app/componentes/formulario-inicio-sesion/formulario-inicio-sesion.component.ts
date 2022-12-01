@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Usuario } from 'src/app/clases/usuario';
+import { ServicioLoginService } from 'src/app/servicios/servicio-login.service';
 import { ServicioTemaService } from 'src/app/servicios/servicio-tema.service';
 
 @Component({
@@ -12,7 +14,7 @@ export class FormularioInicioSesionComponent implements OnInit {
 
   temaOscuro: boolean
 
-  constructor(private router: Router, private servicioTema: ServicioTemaService) {
+  constructor(private router: Router, private servicioTema: ServicioTemaService, private servicioLogin: ServicioLoginService) {
     this.temaOscuro = servicioTema.getTemaOscuro();
     servicioTema.temaOscuro$().subscribe(temaOscuro => this.temaOscuro = temaOscuro);
   }
@@ -27,7 +29,8 @@ export class FormularioInicioSesionComponent implements OnInit {
 
   onLoginAttemp() {
     if (this.form.controls['txtUsu'].valid && this.form.controls['txtContra'].valid) {
-      this.router.navigate(['noticias']);
+      this.servicioLogin.iniciarSesion(new Usuario(this.form.controls['txtUsu'].value, this.form.controls['txtContra'].value));
+      this.router.navigate(['/noticias']);
     }
   }
 

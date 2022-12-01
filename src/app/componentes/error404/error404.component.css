@@ -1,0 +1,11 @@
+* {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+h1.display-1 {
+    font-weight: bold;
+    font-size: 70pt;
+}
+p.display-subtitle {
+    font-weight: normal;
+    font-size: 20pt;
+}

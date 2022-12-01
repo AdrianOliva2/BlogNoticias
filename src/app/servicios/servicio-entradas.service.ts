@@ -6,17 +6,23 @@ import { Entrada } from '../clases/entrada';
   providedIn: 'root'
 })
 export class ServicioEntradasService {
-
+  
   private entradas: Entrada[];
   private _entradas$: BehaviorSubject<Entrada[]>;
 
   constructor() {
-    let entrada: Entrada = new Entrada("Título Entrada 1", "Contenido Entrada 1", new Date());
-    entrada.setId(1);
-    this.entradas = [entrada];
+    let entrada1: Entrada = new Entrada("Título Entrada 1", "Contenido Entrada 1", new Date());
+    entrada1.setId(1);
+    let entrada2: Entrada = new Entrada("Título Entrada 2", "Contenido Entrada 2", new Date());
+    entrada1.setId(2);
+    let entrada3: Entrada = new Entrada("Título Entrada 3", "Contenido Entrada 3", new Date());
+    entrada1.setId(3);
+    let entrada4: Entrada = new Entrada("Título Entrada 4", "Contenido Entrada 4", new Date());
+    entrada1.setId(4);
+    this.entradas = [entrada1, entrada2, entrada3, entrada4];
     this._entradas$ = new BehaviorSubject<Entrada[]>(this.entradas);
   }
-  
+
   public entradas$(): Observable<Entrada[]> {
     return this._entradas$.asObservable();
   }

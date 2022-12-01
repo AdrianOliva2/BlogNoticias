@@ -1,4 +1,5 @@
 <nav class="nav bg-dark">
   <a class="nav-link" [ngClass]="{'bg-primary': temaOscuro}" (click)="cambiarTema(true)">🌑</a>
   <a class="nav-link" [ngClass]="{'bg-primary': !temaOscuro}" (click)="cambiarTema(false)">☀️</a>
+  <a class="nav-link p-2" *ngIf="sesionIniciada()" (click)="cerrarSesion()" overPropio><img src="../../../assets/imgs/prueba.png"></a>
 </nav>

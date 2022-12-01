@@ -35,6 +35,10 @@ export class Entrada {
         this.contenido = contenido;
     }
 
+    public getFechaCreacionStr(): string {
+        return `${this.fechaCreacion.getDate()}/${this.fechaCreacion.getMonth() + 1}/${this.fechaCreacion.getFullYear()} ${this.fechaCreacion.getHours()}:${this.fechaCreacion.getMinutes()}:${this.fechaCreacion.getSeconds()}`;
+    }
+
     public getFechaCreacion(): Date {
         return this.fechaCreacion;
     }

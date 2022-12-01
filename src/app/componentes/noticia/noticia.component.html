@@ -1,6 +1,13 @@
 <div class="card-body">
     <h4 class="card-title">{{noticia.getTitulo()}}</h4>
     <p class="card-text">{{noticia.getContenido()}}</p>
-    <p class="card-text">Fecha: {{noticia.getFechaCreacion().getDate()}}/{{noticia.getFechaCreacion().getMonth() + 1}}/{{noticia.getFechaCreacion().getFullYear()}} {{noticia.getFechaCreacion().getHours()}}:{{noticia.getFechaCreacion().getMinutes()}}:{{noticia.getFechaCreacion().getSeconds()}}</p>
-    <a name="" id="" class="btn btn-danger" role="button" (click)="eliminarNoticia()">Eliminar</a>
+    <p class="card-text">Fecha: {{noticia.getFechaCreacionStr()}}</p>
+    <div class="input-group">
+        <span class="input-group-btn">
+            <button class="btn btn-primary" type="button" (click)="verDetalles()">Ver detalles</button>
+        </span>
+        <span class="input-group-btn">
+            <button class=" btn btn-danger ms-2" type="button" (click)="eliminarNoticia()">Eliminar</button>
+        </span>
+    </div>
 </div>
